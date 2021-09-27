@@ -23,25 +23,20 @@
 		let p2Click = 0;
 		let p3Click = 0;
 		let p4Click = 0;
-		let totalClicks = 0;
 		let lastClick = 0;
 
-		let lastSpeak = ["I didn't eat it.", "I don't know.", "Who knows?", "I don't really care.", "Ok, it's me."]
+		let lastSpeak = ["I didn't eat it.", "I don't know.", "Who knows?", "I don't really care.", "Someone in the kitchen.", "I was in the living room.", "There was nothing on the table.", "I only got milk.", "I don't like cookies.", "It's not me.", "Forget it.", "I was not hungry.", "Ok, it's me."]
 
 		p1.onclick = function () {
-			let p1Speak = ["I think it's Sam.", "I was in the living room.", "I don't like cookies."];
+			let p1Speak = ["I think it's Sam."];
 			voices = synth.getVoices();
 			let p1Msg = new SpeechSynthesisUtterance();
-			p1Msg.text = p1Speak[totalClicks];
+			
 			p1Msg.voice = voices[7];
 
 			if (p1Click < p1Speak.length ) {
-				if (p1Click === totalClicks) {
-					p1Click++;
-				}
-				if (p1Click === p2Click && p1Click === p3Click && p1Click === p4Click) {	
-					totalClicks++	
-				}
+				p1Msg.text = p1Speak;
+				p1Click++;
 			} else {
 				if (lastClick < lastSpeak.length) {
 					p1Msg.text = lastSpeak[lastClick];
@@ -56,21 +51,17 @@
 		}
 
 		p2.onclick = function () {
-			let p2Speak = ["It's not me.", "Someone in the kitchen.", "Ask David.", "Forget it."];
+			let p2Speak = ["Ask David."];
 			voices = synth.getVoices(); 
 			let p2Msg = new SpeechSynthesisUtterance();
 			p2Msg.text = p2Speak[totalClicks];
 			p2Msg.voice = voices[32];
 			
 			if (p2Click < p2Speak.length ) {
-				if (p2Click === totalClicks) {
-					p2Click++;
-				}
-				if (p2Click === p1Click && p2Click === p3Click && p2Click === p4Click) {	
-					totalClicks++
-				}
+				p2Msg.text = p2Speak;
+				p2Click++;
 			} else {
-					if (lastClick < lastSpeak.length) {
+				if (lastClick < lastSpeak.length) {
 					p2Msg.text = lastSpeak[lastClick];
 					lastClick++	
 				} else {
@@ -82,21 +73,17 @@
 		}
 
 		p3.onclick = function () {
-			let p3Speak = ["It must be Julia.", "I only got milk.", "There was nothing on the table."];
+			let p3Speak = ["It must be Julia."];
 			voices = synth.getVoices();
 			let p3Msg = new SpeechSynthesisUtterance();
 			p3Msg.text = p3Speak[totalClicks];
 			p3Msg.voice = voices[0];
 			
 			if (p3Click < p3Speak.length ) {
-				if (p3Click === totalClicks) {
-					p3Click++;
-				}
-				if (p3Click === p1Click && p3Click === p1Click && p3Click === p4Click) {	
-					totalClicks++
-				}
+				p3Msg.text = p3Speak;
+				p3Click++;
 			} else {
-					if (lastClick < lastSpeak.length) {
+				if (lastClick < lastSpeak.length) {
 					p3Msg.text = lastSpeak[lastClick];
 					lastClick++	
 				} else {
@@ -108,23 +95,17 @@
 			console.log(p3Click, totalClicks);
 		}
 		p4.onclick = function () {
-			let p4Speak = ["Lisa knows.", "Maybe it's him.", "I was not hungry."];
+			let p4Speak = ["Lisa knows."];
 			voices = synth.getVoices(); 
 			let p4Msg = new SpeechSynthesisUtterance();
 			p4Msg.text = p4Speak[totalClicks];
 			p4Msg.voice = voices[48];
 			
 			if (p4Click < p4Speak.length ) {
-				if (p4Click === totalClicks) {
-					p4Click++;
-					
-				}
-				if (p4Click === p1Click && p4Click === p2Click && p4Click === p3Click) {	
-					totalClicks++
-					
-				}
+				p4Msg.text = p4Speak;
+				p4Click++;
 			} else {
-					if (lastClick < lastSpeak.length) {
+				if (lastClick < lastSpeak.length) {
 					p4Msg.text = lastSpeak[lastClick];
 					lastClick++	
 				} else {
