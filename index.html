@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-	<style>
-		button {width: 20%; font-size: 30px; padding: 15px; margin: 15px;}	
-	</style>
 	</head>
 <body>
 	<button class="p1">David</button>
@@ -11,10 +8,10 @@
 	<button class="p3">Sam</button>
 	<button class="p4">Julia</button>
 	<script>
-		let p1 = document.querySelector('.p1');
-		let p2 = document.querySelector('.p2');
-		let p3 = document.querySelector('.p3');
-		let p4 = document.querySelector('.p4');
+        let p1 = document.querySelector('.p1');
+        let p2 = document.querySelector('.p2');
+        let p3 = document.querySelector('.p3');
+        let p4 = document.querySelector('.p4');
 
 		let synth = window.speechSynthesis;
 		let voices = [];
@@ -23,9 +20,11 @@
 		let p3Click = 0;
 		let p4Click = 0;
 		let totalClicks = 0;
+		let lastClick = 0;
+		let final = ["Ok, it's me.", "I knew it's you.", "Haha!", "You ate it!"];
 
 		p1.onclick = function () {
-			let p1Speak = ["I think it's Sam.", "I was in the living room.", "I don't like cookie."];
+			let p1Speak = ["I think it's Sam.", "I was in the living room.", "I don't like cookies."];
 			voices = synth.getVoices();
 			let p1Msg = new SpeechSynthesisUtterance();
 			p1Msg.text = p1Speak[totalClicks];
@@ -39,7 +38,7 @@
 					totalClicks++	
 				}
 			} else {
-				p1Msg.text = "Game over!"
+					p1Msg.text = "I didn't eat it."	
 			}
 
 			synth.speak(p1Msg)
@@ -47,7 +46,7 @@
 		}
 
 		p2.onclick = function () {
-			let p2Speak = ["It's not me.", "Someone in the kitchen.", "I was busy."];
+			let p2Speak = ["It's not me.", "Someone in the kitchen.", "I was busy.", "Ok, it's me."];
 			voices = synth.getVoices(); 
 			let p2Msg = new SpeechSynthesisUtterance();
 			p2Msg.text = p2Speak[totalClicks];
@@ -61,7 +60,7 @@
 					totalClicks++
 				}
 			} else {
-				p2Msg.text = "Game over!"
+					p2Msg.text = "Game over."
 			}
 			synth.speak(p2Msg);
 			console.log(p2Click, totalClicks);
@@ -82,12 +81,12 @@
 					totalClicks++
 				}
 			} else {
-				p3Msg.text = "Game over!"
+					p3Msg.text = "I don't know."
 			}
+
 			synth.speak(p3Msg);
 			console.log(p3Click, totalClicks);
 		}
-		
 		p4.onclick = function () {
 			let p4Speak = ["Lisa knows.", "Maybe it's him.", "I was not hungry."];
 			voices = synth.getVoices(); 
@@ -105,7 +104,7 @@
 					
 				}
 			} else {
-				p4Msg.text = "Game over!"
+					p4Msg.text = "I don't really care."
 			}
 			synth.speak(p4Msg);
 			console.log(p4Click, totalClicks);
