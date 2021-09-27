@@ -10,7 +10,7 @@
 	<button class="p1">David</button>
 	<button class="p2">Lisa</button>
 	<button class="p3">Sam</button>
-<!-- 	<button class="p4">Julia</button> -->
+	<button class="p4">Julia</button>
 	<script>
         let p1 = document.querySelector('.p1');
         let p2 = document.querySelector('.p2');
@@ -32,9 +32,7 @@
 			voices = synth.getVoices();
 			let p1Msg = new SpeechSynthesisUtterance();
 			
-			p1Msg.voice = voices.filter(function(voice) {
-    			return voice.name == "Google UK English Male"
-  			})[0];
+			p1Msg.voice = voices[7];
 
 			if (p1Click < p1Speak.length ) {
 				p1Msg.text = p1Speak;
@@ -56,10 +54,7 @@
 			voices = synth.getVoices(); 
 			let p2Msg = new SpeechSynthesisUtterance();
 
-			p2Msg.voice = voices.filter(function(voice) {
-    			return voice.name == "Google UK English Female"
-  			})[0];
-
+			p2Msg.voice = voices[33];
 			
 			if (p2Click < p2Speak.length ) {
 				p2Msg.text = p2Speak;
@@ -76,13 +71,11 @@
 		}
 
 		p3.onclick = function () {
-			let p3Speak = ["Lisa knows."];
+			let p3Speak = ["It must be Julia."];
 			voices = synth.getVoices();
 			let p3Msg = new SpeechSynthesisUtterance();
 
-			p3Msg.voice = voices.filter(function(voice) {
-    			return voice.name == "Google US English en-US"
-  			})[0];
+			p3Msg.voice = voices[0];
 			
 			if (p3Click < p3Speak.length ) {
 				p3Msg.text = p3Speak;
@@ -98,14 +91,12 @@
 
 			synth.speak(p3Msg);
 		}
-/*		p4.onclick = function () {
+		p4.onclick = function () {
 			let p4Speak = ["Lisa knows."];
 			voices = synth.getVoices(); 
 			let p4Msg = new SpeechSynthesisUtterance();
 
-			p4Msg.voice = voices.filter(function(voice) {
-    			return voice.name == "Google US English en-US"
-  			})[0];
+			p4Msg.voice = voices[49];
 			
 			if (p4Click < p4Speak.length ) {
 				p4Msg.text = p4Speak;
@@ -119,7 +110,7 @@
 				}
 			}
 			synth.speak(p4Msg);
-		}*/
+		}
 	</script>
 </body>
 </html>
