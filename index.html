@@ -28,8 +28,10 @@
 			p1Msg.text = p1Speak[p1Click];
 			p1Msg.voice = voices[7];
 			synth.speak(p1Msg);
-			if (p1Click === 0 && p1Click < p1Speak.length) {
-				p1Click++;
+			if (p1Click < p1Speak.length) {
+				if (p1Click === 0) {
+					p1Click++;
+				}
 			}
 		}
 
