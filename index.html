@@ -3,15 +3,15 @@
 	<head>
 	</head>
 <body>
-	<button class="p1">Person1</button>
-	<button class="p2">Person2</button>
-	<button class="p3">Person3</button>
-	<button class="p4">Person4</button>
+	<button class="p1">David</button>
+	<button class="p2">Lisa</button>
+	<button class="p3">Sam</button>
+	<button class="p4">Julia</button>
 	<script>
-        let p1 = document.querySelector('.p1');
-        let p2 = document.querySelector('.p2');
-        let p3 = document.querySelector('.p3');
-        let p4 = document.querySelector('.p4');
+		let p1 = document.querySelector('.p1');
+		let p2 = document.querySelector('.p2');
+		let p3 = document.querySelector('.p3');
+		let p4 = document.querySelector('.p4');
 
 		let synth = window.speechSynthesis;
 		let voices = [];
@@ -19,47 +19,93 @@
 		let p2Click = 0;
 		let p3Click = 0;
 		let p4Click = 0;
+		let totalClicks = 0;
 
 		p1.onclick = function () {
-			let i = 0;
-			let p1Speak = ["message one", "message two", "message three"];
+			let p1Speak = ["I think it's Sam.", "I was in the living room.", "I don't like cookie."];
 			voices = synth.getVoices();
 			let p1Msg = new SpeechSynthesisUtterance();
-			p1Msg.text = p1Speak[p1Click];
+			p1Msg.text = p1Speak[totalClicks];
 			p1Msg.voice = voices[7];
-			synth.speak(p1Msg);
-			if (p1Click < p1Speak.length) {
-				if (p1Click === 0) {
+
+			if (p1Click < p1Speak.length ) {
+				if (p1Click === totalClicks) {
 					p1Click++;
 				}
+				if (p1Click === p2Click && p1Click === p3Click && p1Click === p4Click) {	
+					totalClicks++	
+				}
+			} else {
+				p1Msg.text = "Game over!"
 			}
+
+			synth.speak(p1Msg)
+			console.log(p1Click, totalClicks);	
 		}
 
 		p2.onclick = function () {
+			let p2Speak = ["It's not me.", "Someone in the kitchen.", "I was busy."];
 			voices = synth.getVoices(); 
 			let p2Msg = new SpeechSynthesisUtterance();
-			p2Msg.text = "I didn't do it."
+			p2Msg.text = p2Speak[totalClicks];
 			p2Msg.voice = voices[32];
+			
+			if (p2Click < p2Speak.length ) {
+				if (p2Click === totalClicks) {
+					p2Click++;
+				}
+				if (p2Click === p1Click && p2Click === p3Click && p2Click === p4Click) {	
+					totalClicks++
+				}
+			} else {
+				p2Msg.text = "Game over!"
+			}
 			synth.speak(p2Msg);
-			console.log(p2Voice);
+			console.log(p2Click, totalClicks);
 		}
 
 		p3.onclick = function () {
+			let p3Speak = ["It must be Julia.", "I only got milk.", "There was nothing on the table."];
 			voices = synth.getVoices();
 			let p3Msg = new SpeechSynthesisUtterance();
-			p3Msg.text = "I didn't do it."
-			p3Msg.voice = voices[7];
+			p3Msg.text = p3Speak[totalClicks];
+			p3Msg.voice = voices[0];
+			
+			if (p3Click < p3Speak.length ) {
+				if (p3Click === totalClicks) {
+					p3Click++;
+				}
+				if (p3Click === p1Click && p3Click === p1Click && p3Click === p4Click) {	
+					totalClicks++
+				}
+			} else {
+				p3Msg.text = "Game over!"
+			}
 			synth.speak(p3Msg);
-			console.log("test");
+			console.log(p3Click, totalClicks);
 		}
-
+		
 		p4.onclick = function () {
+			let p4Speak = ["Lisa knows.", "I was not hungry.", "Maybe it's him."];
 			voices = synth.getVoices(); 
 			let p4Msg = new SpeechSynthesisUtterance();
-			p4Msg.text = "I didn't do it."
-			p4Msg.voice = voices[39];
-			p4Msg.pitch = 2;
+			p4Msg.text = p4Speak[totalClicks];
+			p4Msg.voice = voices[48];
+			
+			if (p4Click < p4Speak.length ) {
+				if (p4Click === totalClicks) {
+					p4Click++;
+					
+				}
+				if (p4Click === p1Click && p4Click === p2Click && p4Click === p3Click) {	
+					totalClicks++
+					
+				}
+			} else {
+				p4Msg.text = "Game over!"
+			}
 			synth.speak(p4Msg);
+			console.log(p4Click, totalClicks);
 		}
 	</script>
 </body>
