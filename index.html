@@ -8,58 +8,57 @@
 	<button class="p3">Person3</button>
 	<button class="p4">Person4</button>
 	<script>
-        var p1 = document.querySelector('.p1');
-        var p2 = document.querySelector('.p2');
-        var p3 = document.querySelector('.p3');
-        var p4 = document.querySelector('.p4');
+        let p1 = document.querySelector('.p1');
+        let p2 = document.querySelector('.p2');
+        let p3 = document.querySelector('.p3');
+        let p4 = document.querySelector('.p4');
 
-        var synth = window.speechSynthesis;
-        var voices = [];
-        var p1Click = 0;
-        var p2Click = 0;
-        var p3Click = 0;
-        var p4Click = 0;
+		let synth = window.speechSynthesis;
+		let voices = [];
+		let p1Click = 0;
+		let p2Click = 0;
+		let p3Click = 0;
+		let p4Click = 0;
 
-        p1.onclick = function () {
-          var i = 0;
-          var p1Speak = ["message one", "message two", "message three"];
-          clicks = p1Speak.length;
-          voices = synth.getVoices();
-          var p1Msg = new SpeechSynthesisUtterance();
-          p1Msg.text = p1Speak[p1Click];
-          p1Msg.voice = voices[7];
-          synth.speak(p1Msg);
-          if (p2Click !== 0) {
-          p1Click++;
-          }
-        }
+		p1.onclick = function () {
+			let i = 0;
+			let p1Speak = ["message one", "message two", "message three"];
+			voices = synth.getVoices();
+			let p1Msg = new SpeechSynthesisUtterance();
+			p1Msg.text = p1Speak[p1Click];
+			p1Msg.voice = voices[7];
+			synth.speak(p1Msg);
+			if (p1Click === 0 && p1Click < p1Speak.length) {
+				p1Click++;
+			}
+		}
 
-        p2.onclick = function () {
-          voices = synth.getVoices(); 
-          var p2Msg = new SpeechSynthesisUtterance();
-          p2Msg.text = "I didn't do it."
-          p2Msg.voice = voices[32];
-          synth.speak(p2Msg);
-          console.log(p2Voice);
-        }
+		p2.onclick = function () {
+			voices = synth.getVoices(); 
+			let p2Msg = new SpeechSynthesisUtterance();
+			p2Msg.text = "I didn't do it."
+			p2Msg.voice = voices[32];
+			synth.speak(p2Msg);
+			console.log(p2Voice);
+		}
 
-        p3.onclick = function () {
-          voices = synth.getVoices();
-          var p3Msg = new SpeechSynthesisUtterance();
-          p3Msg.text = "I didn't do it."
-          p3Msg.voice = voices[7];
-          synth.speak(p3Msg);
-          console.log("test");
-        }
+		p3.onclick = function () {
+			voices = synth.getVoices();
+			let p3Msg = new SpeechSynthesisUtterance();
+			p3Msg.text = "I didn't do it."
+			p3Msg.voice = voices[7];
+			synth.speak(p3Msg);
+			console.log("test");
+		}
 
-        p4.onclick = function () {
-          voices = synth.getVoices(); 
-          var p4Msg = new SpeechSynthesisUtterance();
-          p4Msg.text = "I didn't do it."
-          p4Msg.voice = voices[39];
-          p4Msg.pitch = 2;
-          synth.speak(p4Msg);
-        }
+		p4.onclick = function () {
+			voices = synth.getVoices(); 
+			let p4Msg = new SpeechSynthesisUtterance();
+			p4Msg.text = "I didn't do it."
+			p4Msg.voice = voices[39];
+			p4Msg.pitch = 2;
+			synth.speak(p4Msg);
+		}
 	</script>
 </body>
 </html>
